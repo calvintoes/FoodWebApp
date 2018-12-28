@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  </head>
+
+  <body>
+    <div id="root">
+
+      <nav>
+        <div class="nav-wrapper">
+          <div class="col s12">
+
+          <a href="#!" class="brand-logo">{{title}}</a>
+          </div>
+          <ul class="right hide-on-med-and-down">
+            <li><a class="waves-effect waves-light" href="saved.html"><i class="material-icons left">list</i>Saved</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container">
+        <p v-if="errors.length">
+          <b>Please correct the following error(s):</b>
+          <ul>
+            <li v-for="error in errors">{{ error }}</li>
+          </ul>
+        </p>
+
+        <div class="row">
+           <div class="col s12 m5">
+             <div class="card-panel amber lighten-2">
+               <h5 class="white-text">Today's Weather</h5>
+               <span class="black-text"><h6>{{temperature + "° F"}}</h6></span>
+               <span class="black-text"><h6>{{"Humidity: " + humidity + "° F"}}</h6></span>
+               <span class="black-text"><h6>{{"Low: " + minTemp + "° F"}}</h6></span>
+               <span class="black-text"><h6>{{"High: "+ maxTemp + "° F"}}</h6></span>
+
+             </div>
+           </div>
+        </div>
+
+        <div class="row" style="padding: 50px 0 ">
+          <h4 class="teal-text text-lighten-1">Looking for:</h4>
+          <div class="col s12 m12">
+            <div class="row">
+              <form>
+                <div class="input-field col s12 m12">
+                  <i class="material-icons prefix">search</i>
+                  <input id="icon_prefix" type="text" v-model="term" @keyup.enter="search()" required>
+                  <label for="icon_prefix">Looking for</label>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 m12">
+            <div class="section">
+              <h4>Where:</h4>
+              <form>
+                <div class="input-field col s12 m12">
+                  <i class="material-icons prefix">map</i>
+                  <input id="icon_prefix" type="text" v-model="location" @keyup.enter="search()" required>
+                  <label for="icon_prefix">Location</label>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 20px;">
+          <div class="center-align">
+            <button class="btn waves-effect waves-light" type="submit" name="action" @click="search()">Search
+              <i class="material-icons right">send</i>
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m4" v-for="b in businessInfo">
+            <!-- CARDS -->
+            <cards
+              :business-name="b.businessName"
+              :business-link="b.businessLink"
+              :business-image="b.businessImage"
+              :business-status="b.businessStatus"
+              :business-price="b.businessPrice"
+              :business-rating="b.businessRating"
+              :business-phone="b.businessPhone"
+            ></cards>
+
+          </div>
+
+       </div>
+      </div>
+    </div>
+
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    <script src="components.js" charset="utf-8"></script>
+    <script src="main.js" charset="utf-8"></script>
+    <script src="initialize.js" charset="utf-8"></script>
+
+
+  </body>
+</html>

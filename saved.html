@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Saved List</title>
+
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body>
+  <div id="save">
+    <nav>
+      <div class="nav-wrapper">
+        <div class="col s12">
+
+        <a href="#!" class="brand-logo">Saved List</a>
+        </div>
+        <ul class="right hide-on-med-and-down">
+          <li><a class="waves-effect waves-light" href="index.html"><i class="material-icons left">home</i>Main</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div v-if="savedList">
+          <div class="col s12 m4" v-for="s in savedList">
+            <savedcard
+              :business-name="s.businessName"
+            </savedcard>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    <script src="components.js" charset="utf-8"></script>
+    <script src="saved.js" charset="utf-8"></script>
+    <script src="initialize.js" charset="utf-8"></script>
+
+  </body>
+</html>
