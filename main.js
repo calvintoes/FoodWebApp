@@ -39,7 +39,8 @@ const app = new Vue({
       geoSpot: {},
       savedList: [],
       saveObj: {},
-      userID: ""
+      userID: "",
+      searched: "true"
     },
 
     mounted: function(){
@@ -66,6 +67,8 @@ const app = new Vue({
             this.errors.push("Location is Required!");
           }
         }
+
+        this.searched = false;
       },
 
       makeURL(){
