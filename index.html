@@ -117,6 +117,12 @@
             <div v-for="s in savedList" v-if="savedList != 'null'">
               <savedcard
                 :business-name="s.businessName"
+                :business-link="b.businessLink"
+                :business-image="b.businessImage"
+                :business-status="b.businessStatus"
+                :business-price="b.businessPrice"
+                :business-rating="b.businessRating"
+                :business-phone="b.businessPhone"
                 ></savedcard>
             </div>
           </div>

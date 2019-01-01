@@ -13,7 +13,12 @@ Vue.component('cards', {
         Phone: this.businessPhone
       };
 
-      this.$root.savedList.push(cardInfo);
+      for (let j in this.savedList) {
+        if (j != cardInfo) {
+          this.$root.savedList.push(cardInfo);
+        }
+      }
+
 
       let path = 'users/' + this.$root.userID + '/saved/' + this.businessName;
       firebase.database().ref(path).set(cardInfo);
@@ -73,7 +78,13 @@ Vue.component('savedcard', {
 
   },
   props:{
-          businessName: String
+          businessName: String,
+          businessLink: String,
+          businessImage: String,
+          businessStatus: Boolean,
+          businessPrice: String,
+          businessRating: String,
+          businessPhone: String
         },
   template:`
   <div class="card large hoverable">
@@ -84,7 +95,7 @@ Vue.component('savedcard', {
    <a class="btn-floating halfway-fab waves-effect waves-light red" @click="deleteCard()"><i class="material-icons">clear</i></a>
      <span class="card-title activator grey-text text-darken-4">{{businessName}}<i class="material-icons right">more_vert</i></span>
      <p><a target="_blank" :href=businessLink>Link</a></p>
-     <p v-if="businessStatus">Closed</p>
+     <p v-if="this.businessStatus">Closed</p>
      <p v-else>Open</p>
      <p>{{businessPrice}}</p>
      <p>{{businessRating}}</p>
